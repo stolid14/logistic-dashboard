@@ -1,161 +1,181 @@
 'use client';
-
 import { useState } from 'react';
+import { Building2, Bell, DollarSign, Link2, Save } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
-import { Building2, Bell, Wallet, Link2, Save } from 'lucide-react';
-
-function Toggle({ enabled, onChange }: { enabled: boolean; onChange: () => void }) {
-  return (
-    <button
-      onClick={onChange}
-      className={`relative w-11 h-6 rounded-full transition-colors ${enabled ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`}
-    >
-      <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${enabled ? 'translate-x-5' : 'translate-x-0'}`} />
-    </button>
-  );
-}
-
-function Section({ title, icon: Icon, children }: { title: string; icon: React.ComponentType<{ size: number; className?: string }>; children: React.ReactNode }) {
-  return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-      <div className="flex items-center gap-2 px-5 py-4 border-b border-gray-100 bg-gray-50">
-        <Icon size={18} className="text-[#1e3a5f]" />
-        <h3 className="font-semibold text-gray-800">{title}</h3>
-      </div>
-      <div className="p-5 space-y-4">{children}</div>
-    </div>
-  );
-}
-
-function Field({ label, defaultValue, type = 'text' }: { label: string; defaultValue: string; type?: string }) {
-  return (
-    <div>
-      <label className="text-xs font-medium text-gray-600 block mb-1">{label}</label>
-      <input
-        type={type}
-        defaultValue={defaultValue}
-        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1e3a5f]/20 focus:border-[#1e3a5f]"
-      />
-    </div>
-  );
-}
 
 export default function SettingsPage() {
-  const [notifications, setNotifications] = useState({
-    sms: true,
-    whatsapp: true,
-    email: false,
-    failedDelivery: true,
-    cod: true,
-    driverOffline: false,
-  });
-  const [integrations, setIntegrations] = useState({
-    flutterwave: true,
-    paystack: false,
-    googleMaps: true,
-    termii: true,
-  });
+  const [smsAlerts, setSmsAlerts] = useState(true);
+  const [whatsapp, setWhatsapp] = useState(false);
+  const [flutterwave, setFlutterwave] = useState(true);
+  const [saved, setSaved] = useState(false);
 
-  const toggle = (key: keyof typeof notifications) =>
-    setNotifications((prev) => ({ ...prev, [key]: !prev[key] }));
-  const toggleInt = (key: keyof typeof integrations) =>
-    setIntegrations((prev) => ({ ...prev, [key]: !prev[key] }));
+  const handleSave = () => {
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
 
   return (
     <DashboardLayout title="Settings">
-      <div className="max-w-2xl space-y-5">
+      <div className="max-w-3xl space-y-6">
+        {saved && (
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-green-700 text-sm font-medium flex items-center gap-2">
+            <Save size={16} /> Settings saved successfully
+          </div>
+        )}
+
         {/* Company Profile */}
-        <Section title="Company Profile" icon={Building2}>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="Company Name" defaultValue="Speedway Logistics Ltd" />
-            <Field label="RC Number" defaultValue="RC-1234567" />
-            <Field label="Contact Phone" defaultValue="0801-234-5678" />
-            <Field label="Email Address" defaultValue="admin@speedway.ng" />
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center">
+              <Building2 size={18} className="text-blue-600" />
+            </div>
+            <h2 className="text-base font-semibold text-gray-800">Company Profile</h2>
           </div>
-          <Field label="Head Office Address" defaultValue="12 Muritala Mohammed Way, Yaba, Lagos" />
-          <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="City" defaultValue="Lagos" />
-            <Field label="State" defaultValue="Lagos State" />
-          </div>
-          <div>
-            <label className="text-xs font-medium text-gray-600 block mb-1">Company Logo</label>
-            <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center">
-              <div className="w-12 h-12 bg-[#1e3a5f] rounded-xl flex items-center justify-center mx-auto mb-2">
-                <Building2 size={20} className="text-white" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="col-span-2 sm:col-span-1">
+              <label className="block text-xs font-medium text-gray-700 mb-1">Company Name</label>
+              <input defaultValue="Speedway Logistics Ltd" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <label className="block text-xs font-medium text-gray-700 mb-1">Registration Number</label>
+              <input defaultValue="RC-2019-789012" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-medium text-gray-700 mb-1">Address</label>
+              <input defaultValue="14 Ikorodu Road, Maryland, Lagos State" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number</label>
+              <input defaultValue="0801-SPEED-01" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
+              <input defaultValue="ops@speedwaylogistics.ng" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-medium text-gray-700 mb-1">Logo Upload</label>
+              <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center">
+                <p className="text-sm text-gray-500">Drag and drop your logo here, or <span className="text-[#1e3a5f] cursor-pointer underline">browse files</span></p>
+                <p className="text-xs text-gray-400 mt-1">PNG, JPG up to 2MB</p>
               </div>
-              <p className="text-sm text-gray-500">Click to upload logo</p>
-              <p className="text-xs text-gray-400 mt-1">PNG, JPG up to 2MB</p>
             </div>
           </div>
-          <button className="flex items-center gap-2 bg-[#1e3a5f] text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#163050] transition-colors">
-            <Save size={14} />Save Profile
-          </button>
-        </Section>
+        </div>
 
-        {/* Pricing */}
-        <Section title="Pricing Configuration" icon={Wallet}>
-          <div className="grid sm:grid-cols-2 gap-4">
+        {/* Notifications */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-9 h-9 rounded-lg bg-orange-100 flex items-center justify-center">
+              <Bell size={18} className="text-orange-600" />
+            </div>
+            <h2 className="text-base font-semibold text-gray-800">Notification Settings</h2>
+          </div>
+          <div className="space-y-4">
             {[
-              { label: 'Local Delivery (per kg)', value: '₦350' },
-              { label: 'State Delivery (per kg)', value: '₦800' },
-              { label: 'Inter-State (per kg)', value: '₦1,200' },
-              { label: 'Express Surcharge (%)', value: '50' },
-              { label: 'COD Fee (%)', value: '2' },
-              { label: 'Insurance (% of value)', value: '1' },
-            ].map(({ label, value }) => (
-              <div key={label}>
-                <label className="text-xs font-medium text-gray-600 block mb-1">{label}</label>
-                <input defaultValue={value} className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              { label: 'SMS Alerts', desc: 'Send SMS to customers on delivery status updates', state: smsAlerts, setState: setSmsAlerts },
+              { label: 'WhatsApp Integration', desc: 'Send WhatsApp messages for delivery notifications (requires WhatsApp Business API)', state: whatsapp, setState: setWhatsapp },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                <div>
+                  <p className="text-sm font-medium text-gray-800">{item.label}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                </div>
+                <button
+                  onClick={() => item.setState(!item.state)}
+                  className={`relative w-12 h-6 rounded-full transition-colors ${item.state ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`}
+                >
+                  <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${item.state ? 'translate-x-7' : 'translate-x-1'}`} />
+                </button>
               </div>
             ))}
           </div>
-          <button className="flex items-center gap-2 bg-[#1e3a5f] text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#163050] transition-colors">
-            <Save size={14} />Update Pricing
-          </button>
-        </Section>
+        </div>
 
-        {/* Notifications */}
-        <Section title="Notifications" icon={Bell}>
-          {[
-            { key: 'sms' as const, label: 'SMS Alerts to Customers', desc: 'Send SMS on pickup, transit, and delivery' },
-            { key: 'whatsapp' as const, label: 'WhatsApp Updates', desc: 'Auto-send WhatsApp messages via Termii' },
-            { key: 'email' as const, label: 'Email Notifications', desc: 'Send email receipts and updates' },
-            { key: 'failedDelivery' as const, label: 'Failed Delivery Alerts', desc: 'Notify admin on delivery failure' },
-            { key: 'cod' as const, label: 'COD Reconciliation Reminders', desc: 'Daily driver COD reminders' },
-            { key: 'driverOffline' as const, label: 'Driver Offline Alerts', desc: 'Alert when driver goes offline during shift' },
-          ].map(({ key, label, desc }) => (
-            <div key={key} className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-800">{label}</p>
-                <p className="text-xs text-gray-400">{desc}</p>
-              </div>
-              <Toggle enabled={notifications[key]} onChange={() => toggle(key)} />
+        {/* Pricing */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center">
+              <DollarSign size={18} className="text-green-600" />
             </div>
-          ))}
-        </Section>
+            <h2 className="text-base font-semibold text-gray-800">Pricing Configuration</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">Base Rate (per kg)</label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">₦</span>
+                <input defaultValue="500" className="w-full border border-gray-200 rounded-lg pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">COD Fee (%)</label>
+              <input defaultValue="2.5" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+            </div>
+          </div>
+          <div className="border-t border-gray-100 pt-4">
+            <p className="text-xs font-semibold text-gray-700 mb-3">Zone Pricing (₦ per km)</p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { zone: 'Lagos Intra-city', rate: '1,200' },
+                { zone: 'Lagos → Ogun', rate: '3,500' },
+                { zone: 'Lagos → Ibadan', rate: '5,000' },
+                { zone: 'Lagos → Abuja', rate: '12,000' },
+                { zone: 'Lagos → PH', rate: '15,000' },
+                { zone: 'Lagos → Kano', rate: '18,000' },
+              ].map(z => (
+                <div key={z.zone} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                  <span className="text-xs text-gray-600">{z.zone}</span>
+                  <div className="relative">
+                    <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500 text-xs">₦</span>
+                    <input defaultValue={z.rate} className="w-20 border border-gray-200 rounded pl-5 pr-1 py-1 text-xs focus:outline-none text-right" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Integrations */}
-        <Section title="Integrations" icon={Link2}>
-          {[
-            { key: 'flutterwave' as const, label: 'Flutterwave', desc: 'Payment collection & disbursements' },
-            { key: 'paystack' as const, label: 'Paystack', desc: 'Alternative payment gateway' },
-            { key: 'googleMaps' as const, label: 'Google Maps', desc: 'Route planning & tracking maps' },
-            { key: 'termii' as const, label: 'Termii (SMS/WhatsApp)', desc: 'Nigerian messaging API for customer updates' },
-          ].map(({ key, label, desc }) => (
-            <div key={key} className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-800">{label}</p>
-                <p className="text-xs text-gray-400">{desc}</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-medium ${integrations[key] ? 'text-green-600' : 'text-gray-400'}`}>
-                  {integrations[key] ? 'Connected' : 'Disconnected'}
-                </span>
-                <Toggle enabled={integrations[key]} onChange={() => toggleInt(key)} />
-              </div>
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-9 h-9 rounded-lg bg-purple-100 flex items-center justify-center">
+              <Link2 size={18} className="text-purple-600" />
             </div>
-          ))}
-        </Section>
+            <h2 className="text-base font-semibold text-gray-800">Integrations</h2>
+          </div>
+          <div className="space-y-4">
+            {[
+              { name: 'Flutterwave Payment Gateway', desc: 'Accept online payments via Flutterwave', state: flutterwave, setState: setFlutterwave, status: 'Connected' },
+              { name: 'Google Maps API', desc: 'Enable live route tracking and distance calculation', state: true, setState: () => {}, status: 'Active' },
+            ].map((integration) => (
+              <div key={integration.name} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-medium text-gray-800">{integration.name}</p>
+                    <span className="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">{integration.status}</span>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-0.5">{integration.desc}</p>
+                </div>
+                <button
+                  onClick={() => integration.setState(!integration.state)}
+                  className={`relative w-12 h-6 rounded-full transition-colors ${integration.state ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`}
+                >
+                  <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${integration.state ? 'translate-x-7' : 'translate-x-1'}`} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          <button
+            onClick={handleSave}
+            className="bg-[#1e3a5f] hover:bg-[#16304f] text-white px-8 py-3 rounded-xl font-medium transition-colors flex items-center gap-2"
+          >
+            <Save size={16} />
+            Save Changes
+          </button>
+        </div>
       </div>
     </DashboardLayout>
   );
