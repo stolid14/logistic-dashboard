@@ -24,3 +24,40 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .waybill-print-area,
+  .waybill-print-area * {
+    visibility: visible;
+  }
+  .waybill-print-area {
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 9999;
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .waybill-barcode {
+    width: 100%;
+    height: 60px;
+    background: repeating-linear-gradient(
+      90deg,
+      #000 0px,
+      #000 2px,
+      #fff 2px,
+      #fff 5px,
+      #000 5px,
+      #000 6px,
+      #fff 6px,
+      #fff 9px,
+      #000 9px,
+      #000 12px,
+      #fff 12px,
+      #fff 14px
+    );
+  }
+}

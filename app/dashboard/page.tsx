@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { Package, Truck, Users, AlertTriangle, CheckCircle, Clock, DollarSign } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import KPICard from '@/components/KPICard';
@@ -24,9 +25,33 @@ const pieData = [
 
 const recentShipments = shipments.slice(0, 10);
 
+const ALL_EVENTS = [
+  { id: 1, text: '🚚 WB-2024-031 picked up by Musa Ibrahim in Kano', time: 'Just now' },
+  { id: 2, text: '✅ WB-2024-018 delivered in Abuja — ₦22,000 COD collected', time: '1 min ago' },
+  { id: 3, text: '⚠️ WB-2024-044 — customer unreachable in Warri', time: '3 min ago' },
+  { id: 4, text: '🆕 New shipment WB-2024-052 created — Lagos → Port Harcourt', time: '5 min ago' },
+  { id: 5, text: '💰 Adewale Fashola remitted ₦45,000 COD', time: '8 min ago' },
+  { id: 6, text: '🔧 Vehicle LND-234-AB maintenance due', time: '12 min ago' },
+  { id: 7, text: '🚚 WB-2024-039 picked up by Chidi Okafor in Enugu', time: '15 min ago' },
+  { id: 8, text: '✅ WB-2024-021 delivered in Lagos — ₦18,500 COD collected', time: '18 min ago' },
+  { id: 9, text: '🆕 New shipment WB-2024-053 created — Abuja → Kano', time: '22 min ago' },
+  { id: 10, text: '💰 Bola Adeyemi remitted ₦32,000 COD', time: '25 min ago' },
+];
+
 export default function DashboardPage() {
   const todayRevenue = revenueData[5].revenue;
   const todayShipments = revenueData[5].shipments;
+
+  const [eventOffset, setEventOffset] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setEventOffset(prev => (prev + 1) % ALL_EVENTS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const liveEvents = Array.from({ length: 5 }, (_, i) => ALL_EVENTS[(eventOffset + i) % ALL_EVENTS.length]);
 
   return (
     <DashboardLayout title="Dashboard">
@@ -38,6 +63,28 @@ export default function DashboardPage() {
         <KPICard title="Revenue Today" value={formatCurrency(todayRevenue)} change="+5.2% vs yesterday" changeType="positive" icon={DollarSign} iconColor="text-[#f97316]" iconBg="bg-orange-100" />
         <KPICard title="Active Drivers" value="8" change="2 offline today" changeType="neutral" icon={Users} iconColor="text-purple-600" iconBg="bg-purple-100" />
         <KPICard title="Failed Deliveries" value={statusCounts['Failed']?.toString() || '0'} change="-2 vs yesterday" changeType="positive" icon={AlertTriangle} iconColor="text-red-600" iconBg="bg-red-100" />
+      </div>
+
+      {/* Live Activity Feed */}
+      <div className="bg-white rounded-xl border border-gray-200 shadow-sm mb-6 p-5">
+        <div className="flex items-center gap-3 mb-4">
+          <h2 className="text-base font-semibold text-gray-800">Live Activity</h2>
+          <span className="flex items-center gap-1.5 bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse inline-block" />
+            LIVE
+          </span>
+        </div>
+        <div className="space-y-2">
+          {liveEvents.map((event, i) => (
+            <div
+              key={event.id}
+              className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}
+            >
+              <span className="text-gray-800">{event.text}</span>
+              <span className="text-xs text-gray-400 ml-3 whitespace-nowrap">{event.time}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6 mb-6">

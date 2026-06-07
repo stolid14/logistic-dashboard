@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import DemoTour from './DemoTour';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
           {children}
         </main>
       </div>
+      <DemoTour />
     </div>
   );
 }
