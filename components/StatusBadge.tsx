@@ -8,7 +8,7 @@ interface StatusBadgeProps {
 
 const statusConfig: Record<string, { bg: string; text: string; dot: string }> = {
   'Pending': { bg: 'bg-yellow-100', text: 'text-yellow-800', dot: 'bg-yellow-500' },
-  'In Transit': { bg: 'bg-blue-100', text: 'text-blue-800', dot: 'bg-blue-500' },
+  'In Transit': { bg: 'bg-[#f4f3ff]', text: 'text-[#3d1cb3]', dot: 'bg-[#3d1cb3]' },
   'Delivered': { bg: 'bg-green-100', text: 'text-green-800', dot: 'bg-green-500' },
   'Failed': { bg: 'bg-red-100', text: 'text-red-800', dot: 'bg-red-500' },
   'Returned': { bg: 'bg-gray-100', text: 'text-gray-800', dot: 'bg-gray-500' },

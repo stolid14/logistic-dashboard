@@ -32,14 +32,14 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
       )}
       <aside
         className={cn(
-          'fixed top-0 left-0 z-50 h-full w-64 bg-[#1e3a5f] text-white flex flex-col transition-transform duration-300',
+          'fixed top-0 left-0 z-50 h-full w-64 bg-gradient-to-b from-[#3d1cb3] to-[#2d1585] text-white flex flex-col transition-transform duration-300',
           'lg:translate-x-0 lg:static lg:z-auto',
           open ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
           <Link href="/" onClick={onClose} className="hover:opacity-80 transition-opacity">
-            <div className="text-xl font-bold text-white">LogiTrack <span className="text-[#f97316]">NG</span></div>
+            <div className="text-xl font-bold text-white">LogiTrack <span className="text-[#ffe600]">NG</span></div>
             <div className="text-xs text-white/60 mt-0.5">Logistics Management</div>
           </Link>
           <button onClick={onClose} className="lg:hidden text-white/70 hover:text-white">
@@ -58,7 +58,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                 className={cn(
                   'flex items-center gap-3 px-6 py-3 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-[#f97316] text-white'
+                    ? 'bg-[#ffe600] text-[#3d1cb3] font-semibold'
                     : 'text-white/70 hover:bg-white/10 hover:text-white'
                 )}
               >

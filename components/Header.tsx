@@ -98,7 +98,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
         >
           <Menu size={20} />
         </button>
-        <h1 className="text-lg font-semibold text-gray-800">{title}</h1>
+        <h1 className="text-lg font-semibold text-gray-800 pl-3 border-l-4 border-[#3d1cb3]">{title}</h1>
       </div>
 
       <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
               onChange={e => { setSearchQuery(e.target.value); setSearchOpen(true); }}
               onFocus={() => setSearchOpen(true)}
               placeholder="Search waybills, customers..."
-              className="pl-9 pr-8 py-2 border border-gray-200 rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20 bg-gray-50"
+              className="pl-9 pr-8 py-2 border border-gray-200 rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20 bg-gray-50"
             />
             {searchQuery && (
               <button
@@ -137,7 +137,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
                       className="w-full text-left px-3 py-2.5 hover:bg-gray-50 flex items-center justify-between gap-2"
                       onClick={() => { router.push('/shipments'); setSearchOpen(false); setSearchQuery(''); }}
                     >
-                      <span className="text-sm font-mono text-[#1e3a5f] font-semibold">{s.waybill}</span>
+                      <span className="text-sm font-mono text-[#3d1cb3] font-semibold">{s.waybill}</span>
                       <span className="text-xs text-gray-500 truncate">{s.customer}</span>
                     </button>
                   ))}
@@ -186,7 +186,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
             <div className="absolute top-full right-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
               <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-gray-800">Notifications</h3>
-                <span className="text-xs text-[#f97316] font-medium cursor-pointer hover:underline">Mark all read</span>
+                <span className="text-xs text-[#3d1cb3] font-medium cursor-pointer hover:underline">Mark all read</span>
               </div>
               <div className="divide-y divide-gray-50">
                 {NOTIFICATIONS.map(n => (
@@ -200,7 +200,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
                 ))}
               </div>
               <div className="px-4 py-2 border-t border-gray-100 text-center">
-                <button className="text-xs text-[#1e3a5f] font-medium hover:underline">View all notifications</button>
+                <button className="text-xs text-[#3d1cb3] font-medium hover:underline">View all notifications</button>
               </div>
             </div>
           )}
@@ -208,7 +208,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
 
         {/* User */}
         <div className="flex items-center gap-2 pl-3 border-l border-gray-200 cursor-pointer hover:bg-gray-50 rounded-lg px-2 py-1">
-          <div className="w-8 h-8 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-xs font-bold">
+          <div className="w-8 h-8 rounded-full bg-[#3d1cb3] flex items-center justify-center text-white text-xs font-bold">
             SL
           </div>
           <div className="hidden sm:block">
