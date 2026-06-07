@@ -4,6 +4,59 @@ import { Package, MapPin, TrendingUp, CheckCircle, Star, Truck, Users, BarChart3
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1e3a5f] via-[#2a4f80] to-[#1e3a5f]">
+
+      {/* Buildwithstolid Brand Banner */}
+      <div className="relative bg-[#3d1cb3] overflow-hidden">
+        {/* decorative circle top right */}
+        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-[#5b35d5] opacity-60" />
+        <div className="relative max-w-7xl mx-auto px-6 py-10 md:py-14">
+          {/* Tag */}
+          <div className="inline-flex items-center border border-white/30 text-white/80 text-xs px-3 py-1 rounded-full mb-5">
+            For Serious Founders
+          </div>
+          {/* Headline */}
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-2">
+            You paid someone<br />to build it.
+          </h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#ffe600] leading-tight mb-5">
+            It never launched.
+          </h2>
+          {/* Divider */}
+          <div className="w-16 h-0.5 bg-white/20 mb-5" />
+          {/* Subtext */}
+          <p className="text-white/70 text-base md:text-lg mb-7 max-w-xl leading-relaxed">
+            Bad architecture. No ownership. No accountability.<br />
+            We build differently. You own everything from day one.
+          </p>
+          {/* Brand logo row */}
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+              <span className="text-[#3d1cb3] font-extrabold text-sm">B</span>
+            </div>
+            <span className="text-white font-bold text-base">Buildwithstolid</span>
+          </div>
+          {/* CTA + website row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a
+              href="https://instagram.com/buildwithstolid"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#ffe600] hover:bg-yellow-300 text-[#3d1cb3] font-extrabold px-7 py-3.5 rounded-full text-sm transition-colors"
+            >
+              DM us to start your build &nbsp;&raquo;&raquo;
+            </a>
+            <a
+              href="https://buildwithstolid.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 text-sm hover:text-white transition-colors"
+            >
+              buildwithstolid.com
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
         <div className="text-2xl font-bold text-white">
