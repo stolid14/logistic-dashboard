@@ -75,7 +75,7 @@ export default function SettingsPage() {
               { label: 'SMS Alerts', desc: 'Send SMS to customers on delivery status updates', state: smsAlerts, setState: setSmsAlerts },
               { label: 'WhatsApp Integration', desc: 'Send WhatsApp messages for delivery notifications (requires WhatsApp Business API)', state: whatsapp, setState: setWhatsapp },
             ].map((item) => (
-              <div key={item.label} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
+              <div key={item.label} className="flex items-start justify-between gap-4 py-3 border-b border-gray-100 last:border-0">
                 <div>
                   <p className="text-sm font-medium text-gray-800">{item.label}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
