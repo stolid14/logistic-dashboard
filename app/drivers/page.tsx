@@ -24,12 +24,12 @@ export default function DriversPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search drivers..."
-            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none bg-white"
+            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none bg-white min-h-[44px]"
           />
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="flex items-center gap-2 bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center justify-center gap-2 bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto min-h-[44px]"
         >
           <Plus size={16} />
           Add Driver
@@ -37,7 +37,7 @@ export default function DriversPage() {
       </div>
 
       {/* Stats row */}
-      <div className="grid grid-cols-4 gap-3 mb-5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
         {[
           { label: 'Total Drivers', value: drivers.length, color: 'text-gray-800' },
           { label: 'On Trip', value: drivers.filter(d => d.status === 'On Trip').length, color: 'text-blue-600' },
@@ -52,7 +52,7 @@ export default function DriversPage() {
       </div>
 
       {/* Driver cards */}
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         {filtered.map((driver) => (
           <div
             key={driver.id}
@@ -108,11 +108,11 @@ export default function DriversPage() {
 
       {/* Driver Detail Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center sm:p-4">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-lg font-bold">Driver Details</h2>
-              <button onClick={() => setSelected(null)} className="p-2 hover:bg-gray-100 rounded-lg"><X size={20} /></button>
+              <button onClick={() => setSelected(null)} className="p-2 hover:bg-gray-100 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"><X size={20} /></button>
             </div>
             <div className="p-6">
               <div className="flex items-center gap-4 mb-6">
@@ -149,11 +149,11 @@ export default function DriversPage() {
 
       {/* Add Driver Modal */}
       {showAdd && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center sm:p-4">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-lg font-bold">Add New Driver</h2>
-              <button onClick={() => setShowAdd(false)} className="p-2 hover:bg-gray-100 rounded-lg"><X size={20} /></button>
+              <button onClick={() => setShowAdd(false)} className="p-2 hover:bg-gray-100 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center"><X size={20} /></button>
             </div>
             <form className="p-6 space-y-4" onSubmit={(e) => { e.preventDefault(); setShowAdd(false); }}>
               <div className="grid grid-cols-2 gap-4">

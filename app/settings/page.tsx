@@ -170,7 +170,7 @@ export default function SettingsPage() {
         <div className="flex justify-end">
           <button
             onClick={handleSave}
-            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-8 py-3 rounded-xl font-bold transition-all duration-200 flex items-center gap-2"
+            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-8 py-3 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px]"
           >
             <Save size={16} />
             Save Changes

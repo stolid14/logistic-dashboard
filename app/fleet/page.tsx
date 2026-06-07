@@ -43,8 +43,33 @@ export default function FleetPage() {
         ))}
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      {/* Mobile Cards */}
+      <div className="md:hidden bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden divide-y divide-gray-100">
+        {vehicles.map((v) => {
+          const overdueSvc = isServiceOverdue(v.nextService);
+          return (
+            <div key={v.id} className={`p-4 ${overdueSvc ? 'bg-amber-50/40' : ''}`}>
+              <div className="flex items-start justify-between mb-2">
+                <span className="font-mono text-[#3d1cb3] text-sm font-bold">{v.plate}</span>
+                <StatusBadge status={v.status} />
+              </div>
+              <div className="text-sm text-gray-700">{v.type} — {v.model} ({v.year})</div>
+              <div className="text-xs text-gray-500 mt-0.5">{v.driver}</div>
+              <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+                <span>Last: {v.lastService}</span>
+                <span className={`font-medium ${overdueSvc ? 'text-red-600' : ''}`}>
+                  Next: {v.nextService}
+                  {overdueSvc && <AlertTriangle size={10} className="inline ml-1 text-red-500" />}
+                </span>
+              </div>
+              <div className="text-xs text-gray-400 mt-1">{v.mileage.toLocaleString()} km</div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

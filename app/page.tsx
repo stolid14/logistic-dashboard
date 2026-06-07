@@ -6,8 +6,8 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#3d1cb3] via-[#5b35d5] to-[#2d1585]">
 
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-5 max-w-7xl mx-auto">
-        <div className="text-2xl font-bold text-white">
+      <nav className="flex items-center justify-between px-4 md:px-6 py-4 md:py-5 max-w-7xl mx-auto">
+        <div className="text-xl md:text-2xl font-bold text-white">
           LogiTrack <span className="text-[#ffe600]">NG</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-white/80 text-sm">
@@ -19,7 +19,7 @@ export default function LandingPage() {
         <div className="flex flex-col items-end gap-1">
           <Link
             href="/dashboard"
-            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-5 py-2.5 rounded-lg font-bold transition-all duration-200 text-sm"
+            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-4 md:px-5 py-2.5 rounded-lg font-bold transition-all duration-200 text-sm min-h-[44px] flex items-center"
           >
             See Live Demo
           </Link>
@@ -27,7 +27,7 @@ export default function LandingPage() {
             href="https://instagram.com/buildwithstolid"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-white/40 hover:text-white/70 text-[10px] transition-colors"
+            className="hidden sm:flex items-center gap-1 text-white/40 hover:text-white/70 text-[10px] transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -54,7 +54,7 @@ export default function LandingPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/dashboard"
-            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-10 py-4 rounded-xl font-extrabold text-lg transition-all duration-200 shadow-lg"
+            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-8 md:px-10 py-4 rounded-xl font-extrabold text-base md:text-lg transition-all duration-200 shadow-lg text-center min-h-[52px] flex items-center justify-center"
           >
             Explore Live Demo →
           </Link>
@@ -62,7 +62,7 @@ export default function LandingPage() {
             href="https://wa.me/message/buildwithstolid"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 border border-white/20"
+            className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-200 border border-white/20 text-center min-h-[52px] flex items-center justify-center"
           >
             Get a Custom Quote
           </a>
@@ -205,7 +205,7 @@ export default function LandingPage() {
           return (
             <div key={stat.label} className="text-center">
               <Icon className="mx-auto mb-2 text-[#ffe600]" size={26} />
-              <div className="text-3xl font-extrabold text-white">{stat.value}</div>
+              <div className="text-2xl md:text-3xl font-extrabold text-white">{stat.value}</div>
               <div className="text-white/50 text-xs mt-1">{stat.label}</div>
             </div>
           );
@@ -271,7 +271,7 @@ export default function LandingPage() {
       {/* Final CTA */}
       <div className="bg-[#ffe600] py-16">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-extrabold text-[#3d1cb3] mb-3">Ready to get your own platform?</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#3d1cb3] mb-3">Ready to get your own platform?</h2>
           <p className="text-[#3d1cb3]/70 mb-3 text-base">
             Explore the live demo first — then reach out for a custom quote based on your company's scope and requirements.
           </p>
@@ -279,7 +279,7 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/dashboard"
-              className="bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-10 py-4 rounded-xl font-extrabold text-base transition-all duration-200 inline-block shadow-lg"
+              className="bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-8 md:px-10 py-4 rounded-xl font-extrabold text-base transition-all duration-200 text-center min-h-[52px] flex items-center justify-center shadow-lg"
             >
               Explore the Demo →
             </Link>
@@ -287,7 +287,7 @@ export default function LandingPage() {
               href="https://instagram.com/buildwithstolid"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white hover:bg-gray-100 text-[#3d1cb3] px-10 py-4 rounded-xl font-extrabold text-base transition-all duration-200 inline-block border border-[#3d1cb3]/20"
+              className="bg-white hover:bg-gray-100 text-[#3d1cb3] px-8 md:px-10 py-4 rounded-xl font-extrabold text-base transition-all duration-200 text-center min-h-[52px] flex items-center justify-center border border-[#3d1cb3]/20"
             >
               DM for Custom Quote
             </a>

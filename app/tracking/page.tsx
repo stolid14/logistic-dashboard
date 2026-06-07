@@ -34,7 +34,7 @@ export default function TrackingPage() {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Track Your Shipment</h1>
           <p className="text-gray-500 text-sm mb-6">Enter your waybill number to see real-time tracking updates</p>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
               <input
@@ -42,12 +42,12 @@ export default function TrackingPage() {
                 onChange={(e) => setWaybill(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 placeholder="Enter waybill number e.g. WB-2024-001"
-                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20"
+                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20 min-h-[48px]"
               />
             </div>
             <button
               onClick={handleSearch}
-              className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200"
+              className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 min-h-[48px] w-full sm:w-auto"
             >
               Track
             </button>
@@ -135,7 +135,7 @@ export default function TrackingPage() {
             {/* Map placeholder */}
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
               <h3 className="text-base font-semibold text-gray-900 mb-4">Route Map</h3>
-              <div className="bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-xl h-40 flex items-center justify-center relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-xl h-28 sm:h-40 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #3d1cb3 1px, transparent 1px)', backgroundSize: '25px 25px' }} />
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center">
                   <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white" />

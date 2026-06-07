@@ -29,6 +29,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@layer utilities {
+  .mobile-card {
+    @apply bg-white rounded-xl p-4 shadow-sm border border-gray-100;
+  }
+}
+
 @media print {
   body * {
     visibility: hidden;

@@ -80,8 +80,8 @@ export default function DashboardPage() {
               key={event.id}
               className={`flex items-start justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-[#f4f3ff] border border-[#3d1cb3]/20' : 'bg-gray-50'}`}
             >
-              <span className="text-gray-800 leading-snug">{event.text}</span>
-              <span className="text-xs text-gray-400 ml-3 whitespace-nowrap flex-shrink-0">{event.time}</span>
+              <span className="text-gray-800 leading-snug text-xs md:text-sm">{event.text}</span>
+              <span className="text-xs text-gray-400 ml-2 whitespace-nowrap flex-shrink-0">{event.time}</span>
             </div>
           ))}
         </div>
@@ -91,7 +91,7 @@ export default function DashboardPage() {
         {/* Revenue Chart */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
           <h2 className="text-base font-semibold text-gray-800 mb-4">Revenue — Last 7 Days</h2>
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={180} className="sm:!h-[220px]">
             <BarChart data={last7Days} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="label" tick={{ fontSize: 11 }} />
@@ -105,7 +105,7 @@ export default function DashboardPage() {
         {/* Donut Chart */}
         <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
           <h2 className="text-base font-semibold text-gray-800 mb-4">Delivery Status</h2>
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={180} className="sm:!h-[220px]">
             <PieChart>
               <Pie data={pieData} cx="50%" cy="50%" innerRadius={55} outerRadius={80} dataKey="value" paddingAngle={3}>
                 {pieData.map((entry, i) => (

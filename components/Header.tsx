@@ -98,7 +98,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
         >
           <Menu size={20} />
         </button>
-        <h1 className="text-lg font-semibold text-gray-800 pl-3 border-l-4 border-[#3d1cb3]">{title}</h1>
+        <h1 className="text-base md:text-lg font-semibold text-gray-800 pl-3 border-l-4 border-[#3d1cb3] truncate max-w-[180px] sm:max-w-none">{title}</h1>
       </div>
 
       <div className="flex items-center gap-2">
@@ -183,7 +183,7 @@ export default function Header({ onMenuClick, title }: HeaderProps) {
           </button>
 
           {notifOpen && (
-            <div className="absolute top-full right-0 mt-2 w-80 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+            <div className="absolute top-full right-0 mt-2 w-72 sm:w-80 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden max-w-[calc(100vw-2rem)]">
               <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-gray-800">Notifications</h3>
                 <span className="text-xs text-[#3d1cb3] font-medium cursor-pointer hover:underline">Mark all read</span>

@@ -22,11 +22,11 @@ const peakHours = [
 export default function AnalyticsPage() {
   return (
     <DashboardLayout title="Analytics & Reports">
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
         <p className="text-sm text-gray-500">Showing data for June 2024</p>
         <div className="flex gap-2">
           {['7 Days', '30 Days', '90 Days'].map(p => (
-            <button key={p} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${p === '30 Days' ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
+            <button key={p} className={`px-3 py-2 rounded-lg text-xs font-medium min-h-[36px] ${p === '30 Days' ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
               {p}
             </button>
           ))}
@@ -36,7 +36,7 @@ export default function AnalyticsPage() {
       {/* Revenue Trend */}
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 mb-5">
         <h2 className="text-base font-semibold text-gray-800 mb-4">Revenue Trend — 30 Days</h2>
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="100%" height={200} className="sm:!h-[250px]">
           <LineChart data={last30} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={4} />
@@ -49,7 +49,7 @@ export default function AnalyticsPage() {
         </ResponsiveContainer>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-5 mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
         {/* Deliveries by State */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
           <h2 className="text-base font-semibold text-gray-800 mb-4">Deliveries by State</h2>

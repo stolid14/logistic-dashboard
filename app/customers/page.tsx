@@ -28,12 +28,12 @@ export default function CustomersPage() {
             className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none bg-white"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {(['All', 'Business', 'Individual'] as const).map(t => (
             <button
               key={t}
               onClick={() => setTypeFilter(t)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${typeFilter === t ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${typeFilter === t ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}
             >
               {t}
             </button>
@@ -41,7 +41,37 @@ export default function CustomersPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      {/* Mobile Cards */}
+      <div className="md:hidden bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden divide-y divide-gray-100">
+        {filtered.map((c) => (
+          <div
+            key={c.id}
+            className="p-4 hover:bg-[#f4f3ff] cursor-pointer transition-colors"
+            onClick={() => setSelected(c)}
+          >
+            <div className="flex items-start justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 ${c.type === 'Business' ? 'bg-[#3d1cb3]' : 'bg-[#5b35d5]'}`}>
+                  {c.type === 'Business' ? <Building2 size={14} /> : <User size={14} />}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900">{c.name}</p>
+                  <p className="text-xs text-gray-500">{c.city}</p>
+                </div>
+              </div>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0 ${c.type === 'Business' ? 'bg-blue-100 text-blue-800' : 'bg-[#f4f3ff] text-[#5b35d5]'}`}>{c.type}</span>
+            </div>
+            <div className="text-xs text-gray-500">{c.phone}</div>
+            <div className="flex items-center justify-between mt-2 text-xs">
+              <span className="text-gray-500">{c.totalShipments} shipments</span>
+              <span className="font-semibold text-[#3d1cb3]">{formatCurrency(c.totalSpent)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -88,8 +118,8 @@ export default function CustomersPage() {
       </div>
 
       {selected && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center sm:p-4">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-lg font-bold">Customer Details</h2>
               <button onClick={() => setSelected(null)} className="p-2 hover:bg-gray-100 rounded-lg"><X size={20} /></button>
