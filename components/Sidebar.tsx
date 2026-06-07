@@ -38,10 +38,10 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         )}
       >
         <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <div>
+          <Link href="/" onClick={onClose} className="hover:opacity-80 transition-opacity">
             <div className="text-xl font-bold text-white">LogiTrack <span className="text-[#f97316]">NG</span></div>
             <div className="text-xs text-white/60 mt-0.5">Logistics Management</div>
-          </div>
+          </Link>
           <button onClick={onClose} className="lg:hidden text-white/70 hover:text-white">
             <X size={20} />
           </button>

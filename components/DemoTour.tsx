@@ -47,7 +47,7 @@ export default function DemoTour() {
       {/* Floating Button */}
       <button
         onClick={() => { setActive(true); setStep(0); }}
-        className="fixed bottom-6 right-6 z-40 bg-[#f97316] hover:bg-orange-600 text-white px-4 py-3 rounded-full shadow-lg font-semibold text-sm flex items-center gap-2 transition-all hover:scale-105"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#f97316] hover:bg-orange-600 text-white px-4 py-3 rounded-full shadow-lg font-semibold text-sm flex items-center gap-2 transition-all hover:scale-105"
       >
         <span className="text-base">🚀</span>
         Start Demo Tour
