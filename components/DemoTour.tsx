@@ -77,13 +77,13 @@ export default function DemoTour() {
               {steps.map((_, i) => (
                 <div
                   key={i}
-                  className={`h-1.5 flex-1 rounded-full transition-colors ${i <= step ? 'bg-[#f97316]' : 'bg-gray-200'}`}
+                  className={`h-1.5 flex-1 rounded-full transition-colors ${i <= step ? 'bg-[#3d1cb3]' : 'bg-gray-200'}`}
                 />
               ))}
             </div>
 
             {/* Step label */}
-            <div className="text-xs font-semibold text-[#f97316] uppercase tracking-wide mb-2">
+            <div className="text-xs font-semibold text-[#3d1cb3] uppercase tracking-wide mb-2">
               Step {step + 1} of {steps.length}
             </div>
 
@@ -114,7 +114,7 @@ export default function DemoTour() {
                     setStep(s => s + 1);
                   }
                 }}
-                className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold bg-[#f97316] hover:bg-orange-600 text-white transition-colors"
+                className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold bg-[#3d1cb3] hover:bg-[#2d1585] text-white transition-all duration-200"
               >
                 {isLast ? 'Finish' : 'Next'}
                 {!isLast && <ChevronRight size={16} />}

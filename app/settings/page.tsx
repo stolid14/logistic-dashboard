@@ -26,36 +26,36 @@ export default function SettingsPage() {
         {/* Company Profile */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center">
-              <Building2 size={18} className="text-blue-600" />
+            <div className="w-9 h-9 rounded-lg bg-[#f4f3ff] flex items-center justify-center">
+              <Building2 size={18} className="text-[#3d1cb3]" />
             </div>
             <h2 className="text-base font-semibold text-gray-800">Company Profile</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 sm:col-span-1">
               <label className="block text-xs font-medium text-gray-700 mb-1">Company Name</label>
-              <input defaultValue="Speedway Logistics Ltd" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="Speedway Logistics Ltd" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
             <div className="col-span-2 sm:col-span-1">
               <label className="block text-xs font-medium text-gray-700 mb-1">Registration Number</label>
-              <input defaultValue="RC-2019-789012" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="RC-2019-789012" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
             <div className="col-span-2">
               <label className="block text-xs font-medium text-gray-700 mb-1">Address</label>
-              <input defaultValue="14 Ikorodu Road, Maryland, Lagos State" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="14 Ikorodu Road, Maryland, Lagos State" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number</label>
-              <input defaultValue="0801-SPEED-01" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="0801-SPEED-01" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
-              <input defaultValue="ops@speedwaylogistics.ng" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="ops@speedwaylogistics.ng" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
             <div className="col-span-2">
               <label className="block text-xs font-medium text-gray-700 mb-1">Logo Upload</label>
               <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center">
-                <p className="text-sm text-gray-500">Drag and drop your logo here, or <span className="text-[#1e3a5f] cursor-pointer underline">browse files</span></p>
+                <p className="text-sm text-gray-500">Drag and drop your logo here, or <span className="text-[#3d1cb3] cursor-pointer underline">browse files</span></p>
                 <p className="text-xs text-gray-400 mt-1">PNG, JPG up to 2MB</p>
               </div>
             </div>
@@ -65,8 +65,8 @@ export default function SettingsPage() {
         {/* Notifications */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-9 h-9 rounded-lg bg-orange-100 flex items-center justify-center">
-              <Bell size={18} className="text-orange-600" />
+            <div className="w-9 h-9 rounded-lg bg-[#f4f3ff] flex items-center justify-center">
+              <Bell size={18} className="text-[#3d1cb3]" />
             </div>
             <h2 className="text-base font-semibold text-gray-800">Notification Settings</h2>
           </div>
@@ -82,7 +82,7 @@ export default function SettingsPage() {
                 </div>
                 <button
                   onClick={() => item.setState(!item.state)}
-                  className={`relative w-12 h-6 rounded-full transition-colors ${item.state ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`}
+                  className={`relative w-12 h-6 rounded-full transition-colors ${item.state ? 'bg-[#3d1cb3]' : 'bg-gray-200'}`}
                 >
                   <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${item.state ? 'translate-x-7' : 'translate-x-1'}`} />
                 </button>
@@ -104,12 +104,12 @@ export default function SettingsPage() {
               <label className="block text-xs font-medium text-gray-700 mb-1">Base Rate (per kg)</label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">₦</span>
-                <input defaultValue="500" className="w-full border border-gray-200 rounded-lg pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+                <input defaultValue="500" className="w-full border border-gray-200 rounded-lg pl-7 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
               </div>
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">COD Fee (%)</label>
-              <input defaultValue="2.5" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" />
+              <input defaultValue="2.5" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" />
             </div>
           </div>
           <div className="border-t border-gray-100 pt-4">
@@ -158,7 +158,7 @@ export default function SettingsPage() {
                 </div>
                 <button
                   onClick={() => integration.setState(!integration.state)}
-                  className={`relative w-12 h-6 rounded-full transition-colors ${integration.state ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`}
+                  className={`relative w-12 h-6 rounded-full transition-colors ${integration.state ? 'bg-[#3d1cb3]' : 'bg-gray-200'}`}
                 >
                   <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${integration.state ? 'translate-x-7' : 'translate-x-1'}`} />
                 </button>
@@ -170,7 +170,7 @@ export default function SettingsPage() {
         <div className="flex justify-end">
           <button
             onClick={handleSave}
-            className="bg-[#1e3a5f] hover:bg-[#16304f] text-white px-8 py-3 rounded-xl font-medium transition-colors flex items-center gap-2"
+            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-8 py-3 rounded-xl font-bold transition-all duration-200 flex items-center gap-2"
           >
             <Save size={16} />
             Save Changes

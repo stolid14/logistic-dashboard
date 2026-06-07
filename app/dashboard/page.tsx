@@ -17,7 +17,7 @@ const statusCounts = shipments.reduce((acc, s) => {
 
 const pieData = [
   { name: 'Delivered', value: statusCounts['Delivered'] || 0, color: '#22c55e' },
-  { name: 'In Transit', value: statusCounts['In Transit'] || 0, color: '#3b82f6' },
+  { name: 'In Transit', value: statusCounts['In Transit'] || 0, color: '#3d1cb3' },
   { name: 'Pending', value: statusCounts['Pending'] || 0, color: '#eab308' },
   { name: 'Failed', value: statusCounts['Failed'] || 0, color: '#ef4444' },
   { name: 'Returned', value: statusCounts['Returned'] || 0, color: '#6b7280' },
@@ -60,7 +60,7 @@ export default function DashboardPage() {
         <KPICard title="Shipments Today" value={todayShipments.toString()} change="+12% vs yesterday" changeType="positive" icon={Package} iconColor="text-blue-600" iconBg="bg-blue-100" />
         <KPICard title="Pending" value={statusCounts['Pending']?.toString() || '0'} change="Awaiting pickup" changeType="neutral" icon={Clock} iconColor="text-yellow-600" iconBg="bg-yellow-100" />
         <KPICard title="Delivered" value={statusCounts['Delivered']?.toString() || '0'} change="+8% this week" changeType="positive" icon={CheckCircle} iconColor="text-green-600" iconBg="bg-green-100" />
-        <KPICard title="Revenue Today" value={formatCurrency(todayRevenue)} change="+5.2% vs yesterday" changeType="positive" icon={DollarSign} iconColor="text-[#f97316]" iconBg="bg-orange-100" />
+        <KPICard title="Revenue Today" value={formatCurrency(todayRevenue)} change="+5.2% vs yesterday" changeType="positive" icon={DollarSign} iconColor="text-[#3d1cb3]" iconBg="bg-[#f4f3ff]" />
         <KPICard title="Active Drivers" value="8" change="2 offline today" changeType="neutral" icon={Users} iconColor="text-purple-600" iconBg="bg-purple-100" />
         <KPICard title="Failed Deliveries" value={statusCounts['Failed']?.toString() || '0'} change="-2 vs yesterday" changeType="positive" icon={AlertTriangle} iconColor="text-red-600" iconBg="bg-red-100" />
       </div>
@@ -78,7 +78,7 @@ export default function DashboardPage() {
           {liveEvents.map((event, i) => (
             <div
               key={event.id}
-              className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-blue-50 border border-blue-100' : 'bg-gray-50'}`}
+              className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-[#f4f3ff] border border-[#3d1cb3]/20' : 'bg-gray-50'}`}
             >
               <span className="text-gray-800">{event.text}</span>
               <span className="text-xs text-gray-400 ml-3 whitespace-nowrap">{event.time}</span>
@@ -97,7 +97,7 @@ export default function DashboardPage() {
               <XAxis dataKey="label" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `₦${(v / 1000).toFixed(0)}k`} />
               <Tooltip formatter={(v) => [`₦${Number(v).toLocaleString()}`, 'Revenue']} />
-              <Bar dataKey="revenue" fill="#1e3a5f" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="revenue" fill="#3d1cb3" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -122,10 +122,10 @@ export default function DashboardPage() {
       {/* Live Map Placeholder */}
       <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
         <h2 className="text-base font-semibold text-gray-800 mb-3">Live Fleet Map — Lagos & Environs</h2>
-        <div className="relative bg-gradient-to-br from-[#e8f4f8] to-[#d4e8f0] rounded-lg h-48 overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #1e3a5f 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+        <div className="relative bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-lg h-48 overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #3d1cb3 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
           <div className="absolute top-8 left-1/4 flex flex-col items-center">
-            <div className="w-4 h-4 bg-[#f97316] rounded-full border-2 border-white shadow-md animate-pulse" />
+            <div className="w-4 h-4 bg-[#ffe600] rounded-full border-2 border-white shadow-md animate-pulse" />
             <span className="text-[10px] text-gray-700 mt-1 font-medium bg-white px-1 rounded">Ikeja Hub</span>
           </div>
           <div className="absolute top-16 left-1/2 flex flex-col items-center">
@@ -137,10 +137,10 @@ export default function DashboardPage() {
             <span className="text-[10px] text-gray-700 mt-1 font-medium bg-white px-1 rounded">Lekki</span>
           </div>
           <div className="absolute top-6 right-1/4">
-            <Truck size={20} className="text-[#1e3a5f] opacity-70" />
+            <Truck size={20} className="text-[#3d1cb3] opacity-70" />
           </div>
           <div className="absolute bottom-8 left-1/3">
-            <Truck size={20} className="text-[#f97316]" />
+            <Truck size={20} className="text-[#ffe600]" />
           </div>
           <div className="text-center z-10">
             <div className="text-sm text-gray-600 font-medium bg-white/80 px-4 py-2 rounded-lg shadow-sm">
@@ -154,12 +154,12 @@ export default function DashboardPage() {
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
         <div className="p-5 border-b border-gray-100 flex items-center justify-between">
           <h2 className="text-base font-semibold text-gray-800">Recent Shipments</h2>
-          <a href="/shipments" className="text-sm text-[#1e3a5f] hover:underline font-medium">View all</a>
+          <a href="/shipments" className="text-sm text-[#3d1cb3] hover:text-[#2d1585] font-medium hover:underline transition-colors">View all</a>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50">
+              <tr className="bg-[#f4f3ff]">
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Waybill</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Customer</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider hidden md:table-cell">Route</th>
@@ -169,8 +169,8 @@ export default function DashboardPage() {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {recentShipments.map((s) => (
-                <tr key={s.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-4 py-3 text-sm font-mono font-medium text-[#1e3a5f]">{s.waybill}</td>
+                <tr key={s.id} className="hover:bg-[#f4f3ff] transition-colors">
+                  <td className="px-4 py-3 text-sm font-mono font-medium text-[#3d1cb3]">{s.waybill}</td>
                   <td className="px-4 py-3 text-sm text-gray-700 max-w-[150px] truncate">{s.customer}</td>
                   <td className="px-4 py-3 text-xs text-gray-500 hidden md:table-cell">
                     <span className="truncate block max-w-[200px]">{s.origin} → {s.destination}</span>

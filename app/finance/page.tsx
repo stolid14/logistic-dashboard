@@ -35,7 +35,7 @@ export default function FinancePage() {
               <XAxis type="number" tick={{ fontSize: 10 }} tickFormatter={(v) => `₦${(v/1000000).toFixed(1)}M`} />
               <YAxis type="category" dataKey="route" tick={{ fontSize: 10 }} width={90} />
               <Tooltip formatter={(v) => [`₦${Number(v).toLocaleString()}`, 'Revenue']} />
-              <Bar dataKey="revenue" fill="#f97316" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="revenue" fill="#3d1cb3" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -86,7 +86,7 @@ export default function FinancePage() {
           <h2 className="text-base font-semibold text-gray-800">Invoices</h2>
           <button
             onClick={() => setShowInvoiceModal(true)}
-            className="bg-[#1e3a5f] hover:bg-[#16304f] text-white px-4 py-2 rounded-lg text-sm font-medium"
+            className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200"
           >
             + Generate Invoice
           </button>
@@ -94,7 +94,7 @@ export default function FinancePage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50">
+              <tr className="bg-[#f4f3ff]">
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Invoice #</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Customer</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Amount</th>
@@ -105,8 +105,8 @@ export default function FinancePage() {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {invoices.map((inv) => (
-                <tr key={inv.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm font-mono text-[#1e3a5f] font-medium">{inv.id}</td>
+                <tr key={inv.id} className="hover:bg-[#f4f3ff]">
+                  <td className="px-4 py-3 text-sm font-mono text-[#3d1cb3] font-medium">{inv.id}</td>
                   <td className="px-4 py-3 text-sm text-gray-700">{inv.customer}</td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-800">{formatCurrency(inv.amount)}</td>
                   <td className="px-4 py-3 text-xs text-gray-500">{inv.date}</td>
@@ -156,7 +156,7 @@ export default function FinancePage() {
               </div>
               <div className="flex gap-3 pt-2">
                 <button type="button" onClick={() => setShowInvoiceModal(false)} className="flex-1 border border-gray-200 rounded-lg py-2.5 text-sm font-medium hover:bg-gray-50">Cancel</button>
-                <button type="submit" className="flex-1 bg-[#f97316] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#ea6c0a]">Generate</button>
+                <button type="submit" className="flex-1 bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] rounded-lg py-2.5 text-sm font-medium font-bold transition-all duration-200">Generate</button>
               </div>
             </form>
           </div>

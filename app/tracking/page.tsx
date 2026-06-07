@@ -29,8 +29,8 @@ export default function TrackingPage() {
       <div className="max-w-2xl mx-auto">
         {/* Search */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 mb-6 text-center">
-          <div className="w-14 h-14 bg-[#1e3a5f]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <MapPin className="text-[#1e3a5f]" size={28} />
+          <div className="w-14 h-14 bg-[#3d1cb3]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <MapPin className="text-[#3d1cb3]" size={28} />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Track Your Shipment</h1>
           <p className="text-gray-500 text-sm mb-6">Enter your waybill number to see real-time tracking updates</p>
@@ -42,17 +42,17 @@ export default function TrackingPage() {
                 onChange={(e) => setWaybill(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 placeholder="Enter waybill number e.g. WB-2024-001"
-                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20"
+                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20"
               />
             </div>
             <button
               onClick={handleSearch}
-              className="bg-[#1e3a5f] hover:bg-[#16304f] text-white px-6 py-3 rounded-xl font-medium text-sm transition-colors"
+              className="bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200"
             >
               Track
             </button>
           </div>
-          <p className="text-xs text-gray-400 mt-3">Try demo: <button onClick={() => { setWaybill('WB-2024-001'); }} className="text-[#1e3a5f] underline">WB-2024-001</button></p>
+          <p className="text-xs text-gray-400 mt-3">Try demo: <button onClick={() => { setWaybill('WB-2024-001'); }} className="text-[#3d1cb3] underline">WB-2024-001</button></p>
         </div>
 
         {notFound && (
@@ -69,7 +69,7 @@ export default function TrackingPage() {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Waybill Number</p>
-                  <p className="text-xl font-bold text-[#1e3a5f] font-mono">{result.waybill}</p>
+                  <p className="text-xl font-bold text-[#3d1cb3] font-mono">{result.waybill}</p>
                 </div>
                 <StatusBadge status={result.status} size="md" />
               </div>
@@ -110,11 +110,11 @@ export default function TrackingPage() {
                   return (
                     <div key={i} className="flex gap-4">
                       <div className="flex flex-col items-center">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${step.completed ? 'bg-[#1e3a5f] text-white' : 'bg-gray-100 text-gray-400'}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${step.completed ? 'bg-[#3d1cb3] text-white' : 'bg-gray-100 text-gray-400'}`}>
                           <Icon size={18} />
                         </div>
                         {i < result.timeline.length - 1 && (
-                          <div className={`w-0.5 h-10 ${step.completed ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`} />
+                          <div className={`w-0.5 h-10 ${step.completed ? 'bg-[#3d1cb3]' : 'bg-gray-200'}`} />
                         )}
                       </div>
                       <div className="pb-8 flex-1">
@@ -135,8 +135,8 @@ export default function TrackingPage() {
             {/* Map placeholder */}
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
               <h3 className="text-base font-semibold text-gray-900 mb-4">Route Map</h3>
-              <div className="bg-gradient-to-br from-[#e8f4f8] to-[#d4e8f0] rounded-xl h-40 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #1e3a5f 1px, transparent 1px)', backgroundSize: '25px 25px' }} />
+              <div className="bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-xl h-40 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #3d1cb3 1px, transparent 1px)', backgroundSize: '25px 25px' }} />
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center">
                   <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
                   <span className="text-[10px] bg-white px-1 rounded mt-1 text-gray-700">{result.origin.split('(')[0].trim()}</span>
@@ -145,8 +145,8 @@ export default function TrackingPage() {
                   <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white" />
                   <span className="text-[10px] bg-white px-1 rounded mt-1 text-gray-700">{result.destination.split('(')[0].trim()}</span>
                 </div>
-                <div className="absolute inset-x-16 top-1/2 border-t-2 border-dashed border-[#1e3a5f]/40" />
-                <Truck className="text-[#f97316] z-10" size={24} />
+                <div className="absolute inset-x-16 top-1/2 border-t-2 border-dashed border-[#3d1cb3]/40" />
+                <Truck className="text-[#3d1cb3] z-10" size={24} />
               </div>
             </div>
           </div>

@@ -34,7 +34,7 @@ export default function ShipmentsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search waybill, customer, city..."
-            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20 bg-white"
+            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20 bg-white"
           />
         </div>
         <div className="flex gap-2">
@@ -51,7 +51,7 @@ export default function ShipmentsPage() {
           </div>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 bg-[#1e3a5f] hover:bg-[#16304f] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
           >
             <Plus size={16} />
             <span className="hidden sm:inline">Create Shipment</span>
@@ -66,7 +66,7 @@ export default function ShipmentsPage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200">
+              <tr className="bg-[#f4f3ff] border-b border-gray-200">
                 {['Waybill #', 'Customer', 'Origin', 'Destination', 'Status', 'Driver', 'Amount (₦)', 'Date'].map(h => (
                   <th key={h} className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider whitespace-nowrap">{h}</th>
                 ))}
@@ -76,10 +76,10 @@ export default function ShipmentsPage() {
               {filtered.map((s) => (
                 <tr
                   key={s.id}
-                  className="hover:bg-gray-50 cursor-pointer transition-colors"
+                  className="hover:bg-[#f4f3ff] cursor-pointer transition-colors"
                   onClick={() => setSelectedShipment(s)}
                 >
-                  <td className="px-4 py-3 text-sm font-mono font-semibold text-[#1e3a5f]">{s.waybill}</td>
+                  <td className="px-4 py-3 text-sm font-mono font-semibold text-[#3d1cb3]">{s.waybill}</td>
                   <td className="px-4 py-3 text-sm text-gray-700 max-w-[130px]">
                     <div className="truncate">{s.customer}</div>
                     <div className="text-xs text-gray-400">{s.customerPhone}</div>
@@ -90,7 +90,7 @@ export default function ShipmentsPage() {
                   <td className="px-4 py-3 text-sm text-gray-600">{s.driver}</td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-800">
                     {formatCurrency(s.amount)}
-                    {s.isCOD && <span className="ml-1 text-[10px] bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded">COD</span>}
+                    {s.isCOD && <span className="ml-1 text-[10px] bg-[#f4f3ff] text-[#3d1cb3] px-1.5 py-0.5 rounded">COD</span>}
                   </td>
                   <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{s.date}</td>
                 </tr>
@@ -105,13 +105,13 @@ export default function ShipmentsPage() {
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
           {/* Waybill print area (hidden in screen, shown in print) */}
           <div className="waybill-print-area hidden">
-            <div style={{ textAlign: 'center', borderBottom: '2px solid #1e3a5f', paddingBottom: 12, marginBottom: 16 }}>
-              <div style={{ fontSize: 24, fontWeight: 900, color: '#1e3a5f' }}>LogiTrack <span style={{ color: '#f97316' }}>NG</span></div>
+            <div style={{ textAlign: 'center', borderBottom: '2px solid #3d1cb3', paddingBottom: 12, marginBottom: 16 }}>
+              <div style={{ fontSize: 24, fontWeight: 900, color: '#3d1cb3' }}>LogiTrack <span style={{ color: '#3d1cb3' }}>NG</span></div>
               <div style={{ fontSize: 12, color: '#555' }}>Nigeria&apos;s Smartest Logistics Platform</div>
             </div>
             <div style={{ textAlign: 'center', marginBottom: 20 }}>
               <div style={{ fontSize: 12, color: '#888', textTransform: 'uppercase', letterSpacing: 2 }}>Waybill Number</div>
-              <div style={{ fontSize: 32, fontWeight: 900, fontFamily: 'monospace', color: '#1e3a5f' }}>{selectedShipment.waybill}</div>
+              <div style={{ fontSize: 32, fontWeight: 900, fontFamily: 'monospace', color: '#3d1cb3' }}>{selectedShipment.waybill}</div>
             </div>
             <div className="waybill-barcode" style={{ marginBottom: 20 }} />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20, borderTop: '1px solid #ddd', paddingTop: 16 }}>
@@ -142,7 +142,7 @@ export default function ShipmentsPage() {
               </div>
               <div>
                 <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Amount</div>
-                <div style={{ fontWeight: 700, fontSize: 18, color: '#f97316' }}>{formatCurrency(selectedShipment.amount)}{selectedShipment.isCOD ? ' (COD)' : ''}</div>
+                <div style={{ fontWeight: 700, fontSize: 18, color: '#3d1cb3' }}>{formatCurrency(selectedShipment.amount)}{selectedShipment.isCOD ? ' (COD)' : ''}</div>
               </div>
               <div>
                 <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Date</div>
@@ -164,7 +164,7 @@ export default function ShipmentsPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={printWaybill}
-                  className="flex items-center gap-1.5 bg-[#f97316] hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                  className="flex items-center gap-1.5 bg-[#ffe600] hover:bg-[#f5dc00] text-[#3d1cb3] px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200"
                 >
                   🖨️ Print Waybill
                 </button>
@@ -192,9 +192,9 @@ export default function ShipmentsPage() {
                 {selectedShipment.timeline.map((step, i) => (
                   <div key={i} className="flex gap-3">
                     <div className="flex flex-col items-center">
-                      <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 mt-0.5 ${step.completed ? 'bg-[#1e3a5f] border-[#1e3a5f]' : 'bg-white border-gray-300'}`} />
+                      <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 mt-0.5 ${step.completed ? 'bg-[#3d1cb3] border-[#3d1cb3]' : 'bg-white border-gray-300'}`} />
                       {i < selectedShipment.timeline.length - 1 && (
-                        <div className={`w-0.5 h-8 ${step.completed ? 'bg-[#1e3a5f]' : 'bg-gray-200'}`} />
+                        <div className={`w-0.5 h-8 ${step.completed ? 'bg-[#3d1cb3]' : 'bg-gray-200'}`} />
                       )}
                     </div>
                     <div className="pb-6">
@@ -222,11 +222,11 @@ export default function ShipmentsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Customer Name</label>
-                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="e.g. Konga Nigeria" />
+                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="e.g. Konga Nigeria" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number</label>
-                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="0801-234-5678" />
+                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="0801-234-5678" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Origin</label>
@@ -242,16 +242,16 @@ export default function ShipmentsPage() {
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Amount (₦)</label>
-                  <input type="number" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="15000" />
+                  <input type="number" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="15000" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Weight (kg)</label>
-                  <input type="number" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="5.0" />
+                  <input type="number" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="5.0" />
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Description</label>
-                <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="Package description" />
+                <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="Package description" />
               </div>
               <div className="flex items-center gap-2">
                 <input type="checkbox" id="cod" className="rounded" />
@@ -259,7 +259,7 @@ export default function ShipmentsPage() {
               </div>
               <div className="flex gap-3 pt-2">
                 <button type="button" onClick={() => setShowCreateModal(false)} className="flex-1 border border-gray-200 rounded-lg py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
-                <button type="submit" className="flex-1 bg-[#1e3a5f] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#16304f]">Create Shipment</button>
+                <button type="submit" className="flex-1 bg-[#3d1cb3] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#2d1585]">Create Shipment</button>
               </div>
             </form>
           </div>

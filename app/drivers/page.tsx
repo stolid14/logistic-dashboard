@@ -29,7 +29,7 @@ export default function DriversPage() {
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="flex items-center gap-2 bg-[#1e3a5f] hover:bg-[#16304f] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
         >
           <Plus size={16} />
           Add Driver
@@ -60,7 +60,7 @@ export default function DriversPage() {
             onClick={() => setSelected(driver)}
           >
             <div className="flex items-start gap-4">
-              <div className="w-14 h-14 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-[#3d1cb3] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                 {driver.avatar.slice(0, 2)}
               </div>
               <div className="flex-1 min-w-0">
@@ -79,7 +79,7 @@ export default function DriversPage() {
 
             <div className="mt-4 grid grid-cols-3 gap-3 text-center">
               <div className="bg-gray-50 rounded-lg p-2">
-                <p className="text-lg font-bold text-[#1e3a5f]">{driver.todayDeliveries}</p>
+                <p className="text-lg font-bold text-[#3d1cb3]">{driver.todayDeliveries}</p>
                 <p className="text-[10px] text-gray-500">Today</p>
               </div>
               <div className="bg-gray-50 rounded-lg p-2">
@@ -116,7 +116,7 @@ export default function DriversPage() {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-xl font-bold">
+                <div className="w-16 h-16 rounded-full bg-[#3d1cb3] flex items-center justify-center text-white text-xl font-bold">
                   {selected.avatar.slice(0, 2)}
                 </div>
                 <div>
@@ -159,7 +159,7 @@ export default function DriversPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
                   <label className="block text-xs font-medium text-gray-700 mb-1">Full Name</label>
-                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20" placeholder="e.g. Chukwuemeka Obi" />
+                  <input className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3d1cb3]/20" placeholder="e.g. Chukwuemeka Obi" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number</label>
@@ -182,7 +182,7 @@ export default function DriversPage() {
               </div>
               <div className="flex gap-3 pt-2">
                 <button type="button" onClick={() => setShowAdd(false)} className="flex-1 border border-gray-200 rounded-lg py-2.5 text-sm font-medium hover:bg-gray-50">Cancel</button>
-                <button type="submit" className="flex-1 bg-[#1e3a5f] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#16304f]">Add Driver</button>
+                <button type="submit" className="flex-1 bg-[#3d1cb3] text-white rounded-lg py-2.5 text-sm font-medium hover:bg-[#2d1585]">Add Driver</button>
               </div>
             </form>
           </div>

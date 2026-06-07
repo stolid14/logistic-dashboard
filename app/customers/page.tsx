@@ -33,7 +33,7 @@ export default function CustomersPage() {
             <button
               key={t}
               onClick={() => setTypeFilter(t)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${typeFilter === t ? 'bg-[#1e3a5f] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${typeFilter === t ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}
             >
               {t}
             </button>
@@ -45,7 +45,7 @@ export default function CustomersPage() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200">
+              <tr className="bg-[#f4f3ff] border-b border-gray-200">
                 {['Customer', 'Type', 'Contact', 'City', 'Total Shipments', 'Total Spent', 'Last Shipment'].map(h => (
                   <th key={h} className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider whitespace-nowrap">{h}</th>
                 ))}
@@ -55,12 +55,12 @@ export default function CustomersPage() {
               {filtered.map((c) => (
                 <tr
                   key={c.id}
-                  className="hover:bg-gray-50 cursor-pointer transition-colors"
+                  className="hover:bg-[#f4f3ff] cursor-pointer transition-colors"
                   onClick={() => setSelected(c)}
                 >
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 ${c.type === 'Business' ? 'bg-[#1e3a5f]' : 'bg-[#f97316]'}`}>
+                      <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 ${c.type === 'Business' ? 'bg-[#3d1cb3]' : 'bg-[#5b35d5]'}`}>
                         {c.type === 'Business' ? <Building2 size={14} /> : <User size={14} />}
                       </div>
                       <div>
@@ -70,7 +70,7 @@ export default function CustomersPage() {
                     </div>
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'Business' ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'}`}>{c.type}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${c.type === 'Business' ? 'bg-blue-100 text-blue-800' : 'bg-[#f4f3ff] text-[#5b35d5]'}`}>{c.type}</span>
                   </td>
                   <td className="px-4 py-3 text-xs text-gray-600">
                     <div>{c.phone}</div>
@@ -78,7 +78,7 @@ export default function CustomersPage() {
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-700">{c.city}</td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-800 text-center">{c.totalShipments}</td>
-                  <td className="px-4 py-3 text-sm font-semibold text-[#1e3a5f]">{formatCurrency(c.totalSpent)}</td>
+                  <td className="px-4 py-3 text-sm font-semibold text-[#3d1cb3]">{formatCurrency(c.totalSpent)}</td>
                   <td className="px-4 py-3 text-xs text-gray-500">{c.lastShipment}</td>
                 </tr>
               ))}
@@ -96,7 +96,7 @@ export default function CustomersPage() {
             </div>
             <div className="p-6">
               <div className="flex items-center gap-4 mb-6">
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white text-xl ${selected.type === 'Business' ? 'bg-[#1e3a5f]' : 'bg-[#f97316]'}`}>
+                <div className={`w-14 h-14 rounded-full flex items-center justify-center text-white text-xl ${selected.type === 'Business' ? 'bg-[#3d1cb3]' : 'bg-[#5b35d5]'}`}>
                   {selected.type === 'Business' ? <Building2 size={22} /> : <User size={22} />}
                 </div>
                 <div>

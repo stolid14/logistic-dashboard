@@ -26,7 +26,7 @@ export default function AnalyticsPage() {
         <p className="text-sm text-gray-500">Showing data for June 2024</p>
         <div className="flex gap-2">
           {['7 Days', '30 Days', '90 Days'].map(p => (
-            <button key={p} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${p === '30 Days' ? 'bg-[#1e3a5f] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
+            <button key={p} className={`px-3 py-1.5 rounded-lg text-xs font-medium ${p === '30 Days' ? 'bg-[#3d1cb3] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
               {p}
             </button>
           ))}
@@ -43,8 +43,8 @@ export default function AnalyticsPage() {
             <YAxis tick={{ fontSize: 10 }} tickFormatter={(v) => `₦${(v/1000).toFixed(0)}k`} />
             <Tooltip formatter={(v) => [`₦${Number(v).toLocaleString()}`, '']} />
             <Legend />
-            <Line type="monotone" dataKey="revenue" stroke="#1e3a5f" strokeWidth={2} dot={false} name="Revenue" />
-            <Line type="monotone" dataKey="cod" stroke="#f97316" strokeWidth={2} dot={false} name="COD" />
+            <Line type="monotone" dataKey="revenue" stroke="#3d1cb3" strokeWidth={2} dot={false} name="Revenue" />
+            <Line type="monotone" dataKey="cod" stroke="#5b35d5" strokeWidth={2} dot={false} name="COD" />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -59,7 +59,7 @@ export default function AnalyticsPage() {
               <XAxis type="number" tick={{ fontSize: 10 }} />
               <YAxis type="category" dataKey="state" tick={{ fontSize: 10 }} width={75} />
               <Tooltip />
-              <Bar dataKey="deliveries" fill="#1e3a5f" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="deliveries" fill="#3d1cb3" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -73,7 +73,7 @@ export default function AnalyticsPage() {
               <XAxis type="number" tick={{ fontSize: 10 }} />
               <YAxis type="category" dataKey="route" tick={{ fontSize: 10 }} width={95} />
               <Tooltip />
-              <Bar dataKey="shipments" fill="#f97316" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="shipments" fill="#5b35d5" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -99,7 +99,7 @@ export default function AnalyticsPage() {
                   {(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const).map(d => {
                     const val = row[d];
                     const intensity = Math.round((val / 100) * 9);
-                    const bg = intensity > 7 ? 'bg-[#1e3a5f]' : intensity > 5 ? 'bg-blue-400' : intensity > 3 ? 'bg-blue-200' : 'bg-blue-50';
+                    const bg = intensity > 7 ? 'bg-[#3d1cb3]' : intensity > 5 ? 'bg-[#5b35d5]' : intensity > 3 ? 'bg-[#c4b8f0]' : 'bg-[#f4f3ff]';
                     const text = intensity > 5 ? 'text-white' : 'text-gray-600';
                     return (
                       <td key={d} className="px-1 py-1">
