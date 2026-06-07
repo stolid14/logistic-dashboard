@@ -14,6 +14,10 @@ export default function ShipmentsPage() {
   const [selectedShipment, setSelectedShipment] = useState<typeof shipments[0] | null>(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
+  function printWaybill() {
+    window.print();
+  }
+
   const filtered = shipments.filter((s) => {
     const matchSearch = !search || s.waybill.toLowerCase().includes(search.toLowerCase()) || s.customer.toLowerCase().includes(search.toLowerCase()) || s.origin.toLowerCase().includes(search.toLowerCase()) || s.destination.toLowerCase().includes(search.toLowerCase());
     const matchStatus = statusFilter === 'All' || s.status === statusFilter;
@@ -99,15 +103,75 @@ export default function ShipmentsPage() {
       {/* Detail Modal */}
       {selectedShipment && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+          {/* Waybill print area (hidden in screen, shown in print) */}
+          <div className="waybill-print-area hidden">
+            <div style={{ textAlign: 'center', borderBottom: '2px solid #1e3a5f', paddingBottom: 12, marginBottom: 16 }}>
+              <div style={{ fontSize: 24, fontWeight: 900, color: '#1e3a5f' }}>LogiTrack <span style={{ color: '#f97316' }}>NG</span></div>
+              <div style={{ fontSize: 12, color: '#555' }}>Nigeria&apos;s Smartest Logistics Platform</div>
+            </div>
+            <div style={{ textAlign: 'center', marginBottom: 20 }}>
+              <div style={{ fontSize: 12, color: '#888', textTransform: 'uppercase', letterSpacing: 2 }}>Waybill Number</div>
+              <div style={{ fontSize: 32, fontWeight: 900, fontFamily: 'monospace', color: '#1e3a5f' }}>{selectedShipment.waybill}</div>
+            </div>
+            <div className="waybill-barcode" style={{ marginBottom: 20 }} />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20, borderTop: '1px solid #ddd', paddingTop: 16 }}>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>From</div>
+                <div style={{ fontWeight: 700 }}>{selectedShipment.origin}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>To</div>
+                <div style={{ fontWeight: 700 }}>{selectedShipment.destination}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Customer</div>
+                <div style={{ fontWeight: 600 }}>{selectedShipment.customer}</div>
+                <div style={{ fontSize: 11, color: '#555' }}>{selectedShipment.customerPhone}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Driver</div>
+                <div style={{ fontWeight: 600 }}>{selectedShipment.driver}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Description</div>
+                <div>{selectedShipment.description}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Weight</div>
+                <div>{selectedShipment.weight} kg</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Amount</div>
+                <div style={{ fontWeight: 700, fontSize: 18, color: '#f97316' }}>{formatCurrency(selectedShipment.amount)}{selectedShipment.isCOD ? ' (COD)' : ''}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 10, color: '#888', textTransform: 'uppercase', marginBottom: 4 }}>Date</div>
+                <div>{selectedShipment.date}</div>
+              </div>
+            </div>
+            <div style={{ borderTop: '1px dashed #ccc', paddingTop: 24, marginTop: 8, display: 'flex', gap: 40 }}>
+              <div>Received by: ___________________________</div>
+              <div>Date: _______________</div>
+            </div>
+          </div>
+
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <div>
                 <h2 className="text-lg font-bold text-gray-900">{selectedShipment.waybill}</h2>
                 <p className="text-sm text-gray-500">{selectedShipment.description}</p>
               </div>
-              <button onClick={() => setSelectedShipment(null)} className="p-2 hover:bg-gray-100 rounded-lg">
-                <X size={20} />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={printWaybill}
+                  className="flex items-center gap-1.5 bg-[#f97316] hover:bg-orange-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  🖨️ Print Waybill
+                </button>
+                <button onClick={() => setSelectedShipment(null)} className="p-2 hover:bg-gray-100 rounded-lg">
+                  <X size={20} />
+                </button>
+              </div>
             </div>
             <div className="p-6 grid grid-cols-2 gap-4 text-sm">
               <div><span className="text-gray-500">Customer:</span><br /><strong>{selectedShipment.customer}</strong></div>
