@@ -38,12 +38,12 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <div className="max-w-7xl mx-auto px-6 pt-14 pb-20 text-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-10 md:pt-14 pb-16 md:pb-20 text-center">
         <div className="inline-flex items-center gap-2 bg-white/10 text-white/90 px-4 py-1.5 rounded-full text-sm mb-6 border border-white/20">
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           Custom-built for Nigerian logistics companies
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-5 leading-tight">
+        <h1 className="text-2xl md:text-4xl lg:text-6xl font-extrabold text-white mb-5 leading-tight">
           Your Logistics Company<br />Deserves Its Own <span className="text-[#ffe600]">Digital Platform</span>
         </h1>
         <p className="text-lg md:text-xl text-white/70 mb-4 max-w-2xl mx-auto leading-relaxed">
@@ -78,7 +78,7 @@ export default function LandingPage() {
           <p className="text-white/50 text-center text-sm mb-12 max-w-xl mx-auto">
             These are the problems costing Nigerian logistics companies money every single day
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { icon: AlertTriangle, title: 'Drivers not remitting COD cash', desc: 'You have no system to track who collected what. Cash leaks happen daily with no proof.' },
               { icon: PhoneOff, title: 'Customers calling all day', desc: '"Where is my package?" — your team answers this 50 times a day instead of growing the business.' },
@@ -116,7 +116,7 @@ export default function LandingPage() {
         <p className="text-white/50 text-center text-sm mb-12 max-w-xl mx-auto">
           One dashboard to run your entire logistics operation — no third-party tools, no WhatsApp groups
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
             { icon: MapPin, title: 'Real-Time Shipment Tracking', desc: 'Every shipment gets a live tracking page. Customers self-serve — no more calls to your team.' },
             { icon: Truck, title: 'Driver & Fleet Management', desc: 'Monitor every driver and vehicle. Track trips, ratings, availability and performance in real time.' },
@@ -148,7 +148,7 @@ export default function LandingPage() {
           <p className="text-white/50 text-center text-sm mb-12 max-w-xl mx-auto">
             This is not a shared platform. We build it exclusively for your company.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
               { icon: Globe, title: 'Your Own Domain', desc: 'Deployed on your domain — e.g. app.yourcompany.com. Fully branded with your logo and company name.' },
               { icon: Server, title: 'Your Own Infrastructure', desc: 'Your database, your servers, your data. No sharing with other companies. Full ownership from day one.' },
@@ -168,7 +168,7 @@ export default function LandingPage() {
           </div>
           <div className="bg-white/5 border border-[#ffe600]/30 rounded-2xl p-8 max-w-3xl mx-auto">
             <h3 className="text-white font-bold text-lg mb-6 text-center">Full deliverables include:</h3>
-            <div className="grid md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 'Fully branded dashboard with your logo & colors',
                 'Shipment tracking & waybill management',

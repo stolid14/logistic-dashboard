@@ -54,15 +54,41 @@ export default function ShipmentsPage() {
             className="flex items-center gap-2 bg-[#3d1cb3] hover:bg-[#2d1585] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
           >
             <Plus size={16} />
-            <span className="hidden sm:inline">Create Shipment</span>
+            <span>Create Shipment</span>
           </button>
         </div>
       </div>
 
       <div className="text-sm text-gray-500 mb-3">{filtered.length} shipments found</div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      {/* Mobile Cards */}
+      <div className="md:hidden bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden divide-y divide-gray-100">
+        {filtered.map((s) => (
+          <div
+            key={s.id}
+            className="p-4 hover:bg-[#f4f3ff] cursor-pointer transition-colors"
+            onClick={() => setSelectedShipment(s)}
+          >
+            <div className="flex items-start justify-between mb-2">
+              <span className="font-semibold text-[#3d1cb3] text-sm font-mono">{s.waybill}</span>
+              <StatusBadge status={s.status} />
+            </div>
+            <div className="text-sm font-medium text-gray-800">{s.customer}</div>
+            <div className="text-xs text-gray-500 mt-0.5">{s.customerPhone}</div>
+            <div className="text-xs text-gray-400 mt-1">{s.origin} → {s.destination}</div>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-sm font-semibold text-gray-800">
+                {formatCurrency(s.amount)}
+                {s.isCOD && <span className="ml-1 text-[10px] bg-[#f4f3ff] text-[#3d1cb3] px-1.5 py-0.5 rounded">COD</span>}
+              </span>
+              <span className="text-xs text-gray-400">{s.date}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -102,7 +128,7 @@ export default function ShipmentsPage() {
 
       {/* Detail Modal */}
       {selectedShipment && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-end sm:items-center justify-center sm:p-4">
           {/* Waybill print area (hidden in screen, shown in print) */}
           <div className="waybill-print-area hidden">
             <div style={{ textAlign: 'center', borderBottom: '2px solid #3d1cb3', paddingBottom: 12, marginBottom: 16 }}>
@@ -155,7 +181,7 @@ export default function ShipmentsPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <div>
                 <h2 className="text-lg font-bold text-gray-900">{selectedShipment.waybill}</h2>

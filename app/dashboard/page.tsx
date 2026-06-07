@@ -78,16 +78,16 @@ export default function DashboardPage() {
           {liveEvents.map((event, i) => (
             <div
               key={event.id}
-              className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-[#f4f3ff] border border-[#3d1cb3]/20' : 'bg-gray-50'}`}
+              className={`flex items-start justify-between py-2.5 px-3 rounded-lg text-sm transition-all ${i === 0 ? 'bg-[#f4f3ff] border border-[#3d1cb3]/20' : 'bg-gray-50'}`}
             >
-              <span className="text-gray-800">{event.text}</span>
-              <span className="text-xs text-gray-400 ml-3 whitespace-nowrap">{event.time}</span>
+              <span className="text-gray-800 leading-snug">{event.text}</span>
+              <span className="text-xs text-gray-400 ml-3 whitespace-nowrap flex-shrink-0">{event.time}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Revenue Chart */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
           <h2 className="text-base font-semibold text-gray-800 mb-4">Revenue — Last 7 Days</h2>
@@ -122,7 +122,7 @@ export default function DashboardPage() {
       {/* Live Map Placeholder */}
       <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
         <h2 className="text-base font-semibold text-gray-800 mb-3">Live Fleet Map — Lagos & Environs</h2>
-        <div className="relative bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-lg h-48 overflow-hidden flex items-center justify-center">
+        <div className="relative bg-gradient-to-br from-[#f4f3ff] to-[#e8e4ff] rounded-lg h-36 md:h-48 overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #3d1cb3 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
           <div className="absolute top-8 left-1/4 flex flex-col items-center">
             <div className="w-4 h-4 bg-[#ffe600] rounded-full border-2 border-white shadow-md animate-pulse" />
@@ -156,15 +156,30 @@ export default function DashboardPage() {
           <h2 className="text-base font-semibold text-gray-800">Recent Shipments</h2>
           <a href="/shipments" className="text-sm text-[#3d1cb3] hover:text-[#2d1585] font-medium hover:underline transition-colors">View all</a>
         </div>
-        <div className="overflow-x-auto">
+        {/* Mobile Cards */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {recentShipments.map((s) => (
+            <div key={s.id} className="p-4 hover:bg-[#f4f3ff] transition-colors">
+              <div className="flex items-start justify-between mb-1">
+                <span className="font-mono text-[#3d1cb3] text-sm font-bold">{s.waybill}</span>
+                <StatusBadge status={s.status} />
+              </div>
+              <div className="text-sm text-gray-700 mt-1">{s.customer}</div>
+              <div className="text-xs text-gray-400 mt-1">{s.origin} → {s.destination}</div>
+              <div className="text-sm font-semibold text-gray-800 mt-1">{formatCurrency(s.amount)}</div>
+            </div>
+          ))}
+        </div>
+        {/* Desktop Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="bg-[#f4f3ff]">
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Waybill</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Customer</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider hidden md:table-cell">Route</th>
+                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Route</th>
                 <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Status</th>
-                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider hidden sm:table-cell">Amount</th>
+                <th className="text-left text-xs font-semibold text-gray-500 px-4 py-3 uppercase tracking-wider">Amount</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -172,11 +187,11 @@ export default function DashboardPage() {
                 <tr key={s.id} className="hover:bg-[#f4f3ff] transition-colors">
                   <td className="px-4 py-3 text-sm font-mono font-medium text-[#3d1cb3]">{s.waybill}</td>
                   <td className="px-4 py-3 text-sm text-gray-700 max-w-[150px] truncate">{s.customer}</td>
-                  <td className="px-4 py-3 text-xs text-gray-500 hidden md:table-cell">
+                  <td className="px-4 py-3 text-xs text-gray-500">
                     <span className="truncate block max-w-[200px]">{s.origin} → {s.destination}</span>
                   </td>
                   <td className="px-4 py-3"><StatusBadge status={s.status} /></td>
-                  <td className="px-4 py-3 text-sm font-medium text-gray-800 hidden sm:table-cell">{formatCurrency(s.amount)}</td>
+                  <td className="px-4 py-3 text-sm font-medium text-gray-800">{formatCurrency(s.amount)}</td>
                 </tr>
               ))}
             </tbody>
